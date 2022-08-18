@@ -57,6 +57,7 @@ class EventAdapter(
             val diffResult = DiffUtil.calculateDiff(diffCallback)
             field = newValue
             diffResult.dispatchUpdatesTo(this)
+           // notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -83,6 +84,7 @@ class EventAdapter(
 
         holder.binding.eventTextView.text = event.title
         holder.binding.timeTextView.text = event.time
+        holder.binding.currentTimeTextView.text = event.currentTime
     }
 
     override fun getItemCount(): Int = events.size

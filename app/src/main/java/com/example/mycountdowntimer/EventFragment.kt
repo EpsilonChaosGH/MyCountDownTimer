@@ -3,6 +3,7 @@ package com.example.mycountdowntimer
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import java.util.*
 
 class EventFragment : Fragment() {
     private lateinit var binding: FragmentEventListBinding
+
 
     private val eventsService: EventsService
         get() = (requireActivity().applicationContext as App).eventsService
@@ -38,6 +40,7 @@ class EventFragment : Fragment() {
         }
 
         override fun startEvent(event: Event) {
+            eventsService.startCountDownTimer(event)
         }
     })
 
@@ -64,11 +67,13 @@ class EventFragment : Fragment() {
         adapter.events = it
     }
 
+
+
     private fun createEvent(event: Event, key: String) {
         val dialogBinding = ImputNameBinding.inflate(layoutInflater)
 
         val dialog = AlertDialog.Builder(requireActivity())
-            .setTitle("Add Name and Title")
+            .setTitle("Add Title and Time")
             .setView(dialogBinding.root)
             .setPositiveButton("OK", null)
             .create()
@@ -88,12 +93,12 @@ class EventFragment : Fragment() {
                 }
                 when (key) {
                     ADD_KEY -> {
-                        val newEvent = Event(event.id, enteredName, enteredTime)
+                        val newEvent = Event(event.id, enteredName, enteredTime, enteredTime)
                         eventsService.addEvent(newEvent)
                         dialog.dismiss()
                     }
                     CHANGE_KEY -> {
-                        val nevEvent = Event(event.id, enteredName, enteredTime)
+                        val nevEvent = Event(event.id, enteredName, enteredTime, enteredTime)
                         eventsService.changeEvent(nevEvent)
                         dialog.dismiss()
                     }
