@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textfield.TextInputLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="22dp"
+    android:paddingEnd="22dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputEditText"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:hint="Event name"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:selectAllOnFocus="true"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputTimeEditText"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:hint="How many minutes?"
+        android:inputType="number"
+        android:maxLength="4"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:selectAllOnFocus="true"/>
+</LinearLayout>
+</com.google.android.material.textfield.TextInputLayout>
